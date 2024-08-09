@@ -3,4 +3,6 @@
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
     <string name="loginButton">Login</string>
+    <string name="addTaskBtn">Add Task</string>
+    <string name="viewTaskBtn">View Tasks</string>
 </resources>
