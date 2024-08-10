@@ -5,8 +5,10 @@ Features added:
 - Menu Activity
 - Main Activity
 - Login
+- Adding Tasks Fragment
 
 Features to be added:
+- Date and Time
 - Registration function
 - Dialog SQLite & ACTION_DIAL for phone calls
 - Camera integration for taking pics.
