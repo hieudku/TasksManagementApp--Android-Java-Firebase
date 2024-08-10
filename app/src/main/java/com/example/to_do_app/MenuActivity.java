@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Load AddTaskFragment when this button is clicked
-                loadFragment(new AddTaskFragment());
+                loadFragment(new ViewTasksFragment());
             }
         });
 
