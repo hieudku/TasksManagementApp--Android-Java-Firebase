@@ -7,19 +7,22 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
+    android:layout_centerInParent="true"
     tools:context=".MainActivity">
 
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:minHeight="48dp"
         android:hint="@string/usernameHint"/>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:minHeight="48dp"
         android:hint="@string/passwordHint"/>
 
     <Button
@@ -28,4 +31,9 @@
         android:layout_height="wrap_content"
         android:text="@string/loginButton"/>
 
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registerButton"/>
 </LinearLayout>

@@ -6,20 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".AddTaskActivity">
 
     <EditText
         android:id="@+id/task_name"
+        android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:maxWidth="80dp"
+        android:layout_height="48dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="@string/addTask"/>
 
     <EditText
         android:id="@+id/task_desc"
+        android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
         android:hint="@string/taskDesc"/>
 
+    <EditText
+        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

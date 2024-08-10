@@ -3,9 +3,12 @@
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
     <string name="loginButton">Login</string>
+    <string name="registerButton">Register</string>
     <string name="addTaskBtn">Add Task</string>
     <string name="viewTaskBtn">View Tasks</string>
     <string name="addTask">Task Name</string>
     <string name="taskDesc">Task Description</string>
     <string name="saveTaskBtn">Save Task</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
