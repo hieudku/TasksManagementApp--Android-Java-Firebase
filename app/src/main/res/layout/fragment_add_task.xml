@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTaskFragment"
-    android:padding="16dp"
-    android:orientation="vertical">
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <EditText
-        android:id="@+id/task_name_frag"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Task Name" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/task_desc_frag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Task Description" />
+        <!-- Task Name Input -->
+        <EditText
+            android:id="@+id/edit_task_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_name"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-    <Button
-        android:id="@+id/save_task_button_frag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Task" />
-</LinearLayout>
+        <!-- Task Description Input -->
+        <EditText
+            android:id="@+id/edit_task_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/task_description"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:gravity="top"
+            android:lines="4"
+            android:maxLines="6" />
+
+        <!-- Save Task Button -->
+        <Button
+            android:id="@+id/button_save_task"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:text="@string/save_task"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

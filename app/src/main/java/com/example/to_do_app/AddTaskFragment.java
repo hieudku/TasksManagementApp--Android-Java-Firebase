@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,7 +20,10 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class AddTaskFragment extends Fragment {
-
+    // Fields
+    private EditText editTaskName;
+    private EditText editTaskDescription;
+    private Button buttonSaveTask;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,27 +66,32 @@ public class AddTaskFragment extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_task, container, false);
 
         // Initialize UI components
-        EditText taskName = view.findViewById(R.id.task_name_frag);
-        EditText taskDescription = view.findViewById(R.id.task_desc_frag);
-        Button saveTaskButton = view.findViewById(R.id.save_task_button_frag);
+        editTaskName = view.findViewById(R.id.edit_task_name);
+        editTaskDescription = view.findViewById(R.id.edit_task_description);
+        buttonSaveTask = view.findViewById(R.id.button_save_task);
 
         // Set up the click listener for the Save button
-        saveTaskButton.setOnClickListener(new View.OnClickListener() {
+        buttonSaveTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = taskName.getText().toString();
-                String description = taskDescription.getText().toString();
+                String taskName = editTaskName.getText().toString();
+                String taskDescription = editTaskDescription.getText().toString();
 
-                if (!name.isEmpty()) {
-                    // Handle saving the task here
-                    Toast.makeText(getActivity(), "Task Saved: " + name, Toast.LENGTH_SHORT).show();
+                if (!taskName.isEmpty()) {
+                    // Handle saving the task here in the future
+                    Toast.makeText(getActivity(), "Task Saved: " + taskName, Toast.LENGTH_SHORT).show();
+
+                    // Clear text boxes after saving
+                    editTaskName.setText("");
+                    editTaskDescription.setText("");
                 } else {
                     Toast.makeText(getActivity(), "Please enter a task name", Toast.LENGTH_SHORT).show();
                 }

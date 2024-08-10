@@ -11,4 +11,7 @@
     <string name="saveTaskBtn">Save Task</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="task_description">Task Description</string>
+    <string name="task_name">Task Name</string>
+    <string name="save_task">Save Task</string>
 </resources>
