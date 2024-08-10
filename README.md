@@ -1,4 +1,4 @@
-# To-do + Reminder app for daily tasks or bigger projects
+# Tasks Management app
 
 ## Features added:
 - User requirements (Docs will be uploaded)
