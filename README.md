@@ -19,9 +19,9 @@ This v0.2.0 release marks a significant step forward in the development of my pr
 - Password Confirmation: Adding password confirmation during user registration.
 - Task Viewing (Read): Enhance the task viewing feature with data retrieval from Firestore.
 - Task Editing (Update): Implement the ability to edit tasks stored in Firestore.
+- Checkbox and removal option when a task is done (Delete).
 - Task Deletion (Delete): Add functionality for deleting tasks from Firestore.
 - Location Support: Optional feature to include location data with tasks.
-- Phone Integration: Explore SQLite Dialog and ACTION_DIAL for phone call functionality.
 - Camera Integration: Enable task-specific photo capture, storing images in the Firestore tasks collection.
 - Testing: Plan for unit and automated testing, including concurrent tests.
 
@@ -34,10 +34,10 @@ I appreciate your interest and involvement in this project as it continues to de
 
 Note: Screenshots of the current interface will be included with this release.
 ## Screenshots
-![login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
-![menu-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen%201.0.png)
-![](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen-frag-view%201.0.png)
-![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-panel.png)
-![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-query.png)
-![](https://github.com/hieudku/TasksManagementApp/blob/master/auth-firebase.png)
+- Login Screen ![login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
+- Menu Screen with Add Task open ![menu-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen%201.0.png)
+- Menu Screen with View Task open ![](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen-frag-view%201.0.png)
+- Firestore database ![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-panel.png)
+- Firestore query table ![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-query.png)
+- Firebase Authentication (Creating account, Login)![](https://github.com/hieudku/TasksManagementApp/blob/master/auth-firebase.png)
 
