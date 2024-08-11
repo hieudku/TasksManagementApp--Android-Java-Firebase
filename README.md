@@ -39,4 +39,5 @@ Note: Screenshots of the current interface will be included with this release.
 ![](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen-frag-view%201.0.png)
 ![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-panel.png)
 ![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-query.png)
+![](https://github.com/hieudku/TasksManagementApp/blob/master/auth-firebase.png)
 
