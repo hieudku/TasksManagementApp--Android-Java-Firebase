@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         // Gather button UI element by id
         Button buttonLogin = findViewById(R.id.login_button);
 
-        // Log in logic here
+        // LOG IN LOGIC -- when login button is clicked
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,8 +99,33 @@ public class MainActivity extends AppCompatActivity {
                     // Failed login
                     Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                 }
-                // Call method with email and password entered as parameter to authenticate user's credentials
+                // Call method with email and password entered as parameters to authenticate user's log in
                 loginUser(email, password);
+            }
+        });
+
+
+        // REGISTER LOGIC -- when click register button
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = editTextEmail.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
+
+                // Check for required fields/format
+                if (email.isEmpty()) {
+                    editTextEmail.setError("Email is required");
+                    editTextEmail.requestFocus();
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    editTextPassword.setError("Password is required");
+                    editTextPassword.requestFocus();
+                    return;
+                }
+                // Call method with email and password entered as parameters to authenticate user's registration
+                registerUser(email, password);
             }
         });
 
@@ -111,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // LOG IN -- send email and password to authenticate
+    // LOG IN AUTH-- email and password as parameters to authenticate
     private void loginUser(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) { // If login is successful
@@ -128,5 +153,34 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Login failed" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // REGISTER AUTH -- email and password as parameters to register
+    private void registerUser(String email, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) { // If registration is successful
+                FirebaseUser user = mAuth.getCurrentUser();
+                Toast.makeText(MainActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+
+                // Then take user to Menu/Dashboard activity
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(MainActivity.this, "Registration failed: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // Skip thje sign in screen if user already signed in
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }

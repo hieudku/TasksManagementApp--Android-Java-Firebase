@@ -21,6 +21,7 @@
 
     <EditText
         android:id="@+id/password"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:minHeight="48dp"
