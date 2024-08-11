@@ -13,9 +13,14 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity {
+    // Declare fields
+    private Button buttonLogout;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +28,22 @@ public class MenuActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_menu);
 
+        // Get UI elements IDs
         Button addTaskButton = findViewById(R.id.add_task_button);
         Button viewTaskButton = findViewById(R.id.view_task_button);
+
+
+        // Start firebase auth
+        mAuth = FirebaseAuth.getInstance();
+        buttonLogout = findViewById(R.id.logout_button);
+
+        // LOG OUT event
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoutUser();
+            }
+        });
 
         // Click event listener for add task button
         addTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -59,5 +78,14 @@ public class MenuActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.addToBackStack(null); // Optional: add this transaction to the back stack
         fragmentTransaction.commit();
+    }
+
+    // LOG OUT METHOD
+    private void logoutUser() {
+        // Take user to Main Activity (log in) screen if logged out
+        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }
