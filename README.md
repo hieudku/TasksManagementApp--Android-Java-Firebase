@@ -1,29 +1,37 @@
-# Tasks Management app
+# Release Notes for v0.2.0
+## Release Date: 12 Aug 2024
 
-## Features added:
-- User requirements (Docs will be uploaded) -- done
-- System design (Class diagram, ERD) -- done
-- Menu Activity, fragment container for add/view task functional requirements. -- done
-- Main Activity, act as Login Activity -- done
-- Tasks Fragment (Add Task, View Tasks) -- done
-- Date and Time stamp for tasks -- done
-- Registration user to Firebase -- done
-- Adding tasks to Firestore (Create) -- done
-- Firebase authentication for user's email and password -- done
-  
-## Features to be added:
-- Confirming password when user register.
-- Viewing tasks (Read) from Firestore
-- Editing tasks (Update) from Firestore
-- Delete tasks (Delete) from Firestore
-- Location support (optional)
-- Dialog SQLite & ACTION_DIAL for phone calls(?)
-- Camera integration for taking pics and stored under tasks collection in Firestore.
-- Unit & Automated Test (concurrent).
+## Overview
+This v0.2.0 release marks a significant step forward in the development of my project, applying several key features and setting the foundation for future development. This update includes the initial implementation of user authentication, task management, and the integration of Firebase for fast, lightweight and secure data storage.
 
-## Documentation
-Android Developers Documentation
-https://developer.android.com/docs
+### Features Added
+User Requirements: User requirements have been fully documented (docs will be uploaded soon).
+System Design: Completed system design with class diagrams and ERDs.
+Menu Activity: Implemented with a fragment container for managing tasks, including adding and viewing tasks.
+Main Activity: Functions as the Login Activity, handling user authentication.
+Tasks Fragment: Added functionalities for adding and viewing tasks.
+Date and Time Stamp: Tasks now include a date and time stamp upon creation.
+User Registration: Implemented user registration to Firebase.
+Task Creation: Tasks can now be added and stored in Firestore (Create operation).
+Firebase Authentication: Integrated Firebase authentication for user login with email and password.
 
-Firebase Documentation
-https://firebase.google.com/docs/
+### Features to be Added
+Password Confirmation: Adding password confirmation during user registration.
+Task Viewing (Read): Enhance the task viewing feature with data retrieval from Firestore.
+Task Editing (Update): Implement the ability to edit tasks stored in Firestore.
+Task Deletion (Delete): Add functionality for deleting tasks from Firestore.
+Location Support: Optional feature to include location data with tasks.
+Phone Integration: Explore SQLite Dialog and ACTION_DIAL for phone call functionality.
+Camera Integration: Enable task-specific photo capture, storing images in the Firestore tasks collection.
+Testing: Plan for unit and automated testing, including concurrent tests.
+
+### Documentation
+For further guidance and detailed documentation, please refer to the following resources:
+
+Android Developers Documentation: Android Docs --> https://developer.android.com/guide/
+Firebase Documentation: Firebase Docs --> https://firebase.google.com/docs/
+We appreciate your interest and involvement in this project as it continues to develop. Feedback is always welcome as we work towards improving and adding new features.
+
+Note: Screenshots of the current interface will be included with this release.
+
+Let me know if there's anything else you'd like to adjust or add!
