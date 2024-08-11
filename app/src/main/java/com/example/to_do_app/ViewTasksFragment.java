@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 import androidx.annotation.NonNull;
+
+
 
 /**
  * A simple {@link Fragment} subclass.
