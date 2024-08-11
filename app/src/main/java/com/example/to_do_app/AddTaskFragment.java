@@ -12,8 +12,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AddTaskFragment#newInstance} factory method to
@@ -21,9 +23,11 @@ import androidx.fragment.app.Fragment;
  */
 public class AddTaskFragment extends Fragment {
     // Fields
-    private EditText editTaskName;
-    private EditText editTaskDescription;
+    private EditText editTextTitle;
+    private EditText editTextDescription;
     private Button buttonSaveTask;
+    private String taskId;
+    private FirebaseFirestore db;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,31 +77,51 @@ public class AddTaskFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_task, container, false);
 
+        // Get instance of firestore
+        db = FirebaseFirestore.getInstance();
+
         // Initialize UI components
-        editTaskName = view.findViewById(R.id.edit_task_name);
-        editTaskDescription = view.findViewById(R.id.edit_task_description);
+        editTextTitle = view.findViewById(R.id.edit_task_name);
+        editTextDescription = view.findViewById(R.id.edit_task_description);
         buttonSaveTask = view.findViewById(R.id.button_save_task);
 
         // Set up the click listener for the Save button
         buttonSaveTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String taskName = editTaskName.getText().toString();
-                String taskDescription = editTaskDescription.getText().toString();
-
-                if (!taskName.isEmpty()) {
-                    // Handle saving the task here in the future
-                    Toast.makeText(getActivity(), "Task Saved: " + taskName, Toast.LENGTH_SHORT).show();
-
-                    // Clear text boxes after saving
-                    editTaskName.setText("");
-                    editTaskDescription.setText("");
-                } else {
-                    Toast.makeText(getActivity(), "Please enter a task name", Toast.LENGTH_SHORT).show();
-                }
+                // When Add task button is clicked, call saveTask method to add task to db
+                saveTask();
             }
         });
-
         return view;
+    }
+
+    private void saveTask() {
+        String title = editTextTitle.getText().toString().trim();
+        String description = editTextDescription.getText().toString().trim();
+
+        // Handle empty title from user
+        if (title.isEmpty()) {
+            editTextTitle.setError("Title cannot be empty");
+            editTextTitle.requestFocus();
+            return;
+        }
+
+        // Id, title, description, timestamp into Hashmap in Firestore db
+        String taskId = db.collection("tasks").document().getId(); // Generate unique ID for each task
+        Map<String, Object> task = new HashMap<>();
+        task.put("id", taskId);
+        task.put("title", title);
+        task.put("description", description);
+        task.put("timestamp", Timestamp.now());
+
+        db.collection("tasks").document(taskId).set(task).addOnSuccessListener(aVoid -> {
+           Toast.makeText(getActivity(), "Task added", Toast.LENGTH_SHORT).show();
+           // Clear text boxes after task is added
+           editTextTitle.setText("");
+           editTextDescription.setText("");
+        }).addOnFailureListener(e -> {
+           Toast.makeText(getActivity(), "Error adding task", Toast.LENGTH_SHORT).show();
+        });
     }
 }
