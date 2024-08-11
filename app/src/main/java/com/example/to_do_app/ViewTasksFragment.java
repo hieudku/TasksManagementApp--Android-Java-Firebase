@@ -4,11 +4,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -28,8 +30,7 @@ import androidx.annotation.NonNull;
  */
 public class ViewTasksFragment extends Fragment {
     // Declare fields
-    private RecyclerView recyclerViewTasks;
-    private List<Task> taskList;
+    private LinearLayout linearLayoutTasks;
     private FirebaseFirestore db;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,12 +82,7 @@ public class ViewTasksFragment extends Fragment {
 
         // Assign to instance of firestore
         db = FirebaseFirestore.getInstance();
-
-        // Initialize recycler view by ID
-        recyclerViewTasks = view.findViewById(R.id.recyclerViewTasks);
-        recyclerViewTasks.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        taskList = new ArrayList<>();
+        linearLayoutTasks = view.findViewById(R.id.linearLayoutTasks);
 
         // Load tasks from Firestore
         loadTasks();
@@ -95,21 +91,18 @@ public class ViewTasksFragment extends Fragment {
 
     private void loadTasks() {
         // Query tasks collection from Firestore orderedby time created
-        db.collection("tasks").orderBy("timestamp").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@androidx.annotation.Nullable QuerySnapshot value, @androidx.annotation.Nullable FirebaseFirestoreException error) {
-                if (error != null) { // If error occurs just return
-                    return;
+        db.collection("tasks").orderBy("timestamp").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    Task taskObj = document.toObject(Task.class);
+
+                    // Create and append TextView for each task on fragment_view_tasks.xml
+                    TextView taskTextView = new TextView(getActivity());
+                    taskTextView.setText(taskObj.getTitle());
                 }
-
-                taskList.clear();
-
-                for (QueryDocumentSnapshot doc : value) {
-                    Task task = doc.toObject(Task.class);
-                    taskList.add(task);
-                }
-
             }
         });
+
+
     }
 }
