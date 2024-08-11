@@ -15,8 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/myApp_title"
-        android:textSize="50sp"
-        android:textColor="@color/babyRoseElements"/>
+        android:layout_marginStart="90dp"
+        android:textColor="@color/babyRoseElements"
+        android:textSize="50sp" />
 
     <EditText
         android:id="@+id/email"
