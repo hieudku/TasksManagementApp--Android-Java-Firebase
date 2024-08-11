@@ -34,6 +34,6 @@ I appreciate your interest and involvement in this project as it continues to de
 
 Note: Screenshots of the current interface will be included with this release.
 ## Screenshots
-[login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
+![login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
 
 Let me know if there's anything else you'd like to adjust or add!
