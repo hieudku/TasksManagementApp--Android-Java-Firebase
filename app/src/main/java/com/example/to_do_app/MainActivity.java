@@ -160,7 +160,16 @@ public class MainActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) { // If registration is successful
                 FirebaseUser user = mAuth.getCurrentUser();
-                Toast.makeText(MainActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                if (user != null) {
+                    user.sendEmailVerification().addOnCompleteListener(emailTask -> {
+                       if (emailTask.isSuccessful()) {
+                           Toast.makeText(MainActivity.this, "Registration successful! Please check your email for verification.", Toast.LENGTH_LONG).show();
+                       }
+                       else {
+                           Toast.makeText(MainActivity.this, "Failed to send email.", Toast.LENGTH_SHORT).show();
+                       }
+                    });
+                }
 
                 // Then take user to Menu/Dashboard activity
                 Intent intent = new Intent(MainActivity.this, MenuActivity.class);
