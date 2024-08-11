@@ -88,17 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                // *Test* username and password entered - admin always log in successful ---- TO REMOVE LATER
-                if (email.equals("admin") && password.equals("1234")) {
-                    // Successful login
-                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                    startActivity(intent);
-                }
-                else {
-                    // Failed login
-                    Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
-                }
+
                 // Call method with email and password entered as parameters to authenticate user's log in
                 loginUser(email, password);
             }
