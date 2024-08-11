@@ -24,6 +24,7 @@ This v0.2.0 release marks a significant step forward in the development of my pr
 - Location Support: Optional feature to include location data with tasks.
 - Camera Integration: Enable task-specific photo capture, storing images in the Firestore tasks collection.
 - Testing: Plan for unit and automated testing, including concurrent tests.
+- Improving UX & UI.
 
 ### Documentation
 For further guidance and detailed documentation, please refer to the following resources:
@@ -34,10 +35,10 @@ I appreciate your interest and involvement in this project as it continues to de
 
 Note: Screenshots of the current interface will be included with this release.
 ## Screenshots
-- Login Screen ![login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
-- Menu Screen with Add Task open ![menu-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen%201.0.png)
-- Menu Screen with View Task open ![](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen-frag-view%201.0.png)
-- Firestore database ![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-panel.png)
-- Firestore query table ![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-query.png)
-- Firebase Authentication (Creating account, Login)![](https://github.com/hieudku/TasksManagementApp/blob/master/auth-firebase.png)
+- Login Screen <br />![login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
+- Menu Screen with Add Task open <br />![menu-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen%201.0.png)
+- Menu Screen with View Task open <br />![](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen-frag-view%201.0.png)
+- Firestore database <br />![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-panel.png)
+- Firestore query table <br />![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-query.png)
+- Firebase Authentication (Creating account, Login)<br /> ![](https://github.com/hieudku/TasksManagementApp/blob/master/auth-firebase.png)
 
