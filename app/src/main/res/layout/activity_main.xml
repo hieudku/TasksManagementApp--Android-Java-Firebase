@@ -5,19 +5,28 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="20dp"
     android:orientation="vertical"
     android:layout_centerInParent="true"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/babyRoseBackground">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/myApp_title"
+        android:textSize="50sp"
+        android:textColor="@color/babyRoseElements"/>
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:minHeight="48dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/emailHint"/>
+        android:layout_marginTop="30dp"
+        android:hint="@string/emailHint"
+        android:textColor="@color/babyRoseElements"
+        android:textColorHint="@color/babyRoseElements"/>
 
     <EditText
         android:id="@+id/password"
@@ -26,20 +35,26 @@
         android:layout_height="48dp"
         android:minHeight="48dp"
         android:hint="@string/passwordHint"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:textColor="@color/babyRoseElements"
+        android:textColorHint="@color/babyRoseElements"/>
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/loginButton"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/babyRoseElements" />
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/registerButton"
-        android:layout_marginTop="8dp"/>
+        android:textColor="@color/black"
+        android:backgroundTint="@color/babyRoseElements"/>
 
 </LinearLayout>

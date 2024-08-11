@@ -16,4 +16,6 @@
     <string name="save_task">Save Task</string>
     <string name="emailHint">Email</string>
     <string name="logout">Logout</string>
+    <string name="tasks_list">Tasks will be listed here</string>
+    <string name="myApp_title">Remindo</string>
 </resources>
