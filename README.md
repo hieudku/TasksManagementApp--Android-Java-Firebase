@@ -12,6 +12,7 @@
 - Firebase authentication for user's email and password -- done
   
 ## Features to be added:
+- Confirming password when user register.
 - Viewing tasks (Read) from Firestore
 - Editing tasks (Update) from Firestore
 - Delete tasks (Delete) from Firestore
