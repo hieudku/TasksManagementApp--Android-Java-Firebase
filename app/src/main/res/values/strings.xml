@@ -21,4 +21,5 @@
     <string name="task_title">Task Title</string>
     <string name="task_description_card">Task Description</string>
     <string name="task_title_card">Task Title</string>
+    <string name="my_tasks">My Tasks</string>
 </resources>

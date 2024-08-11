@@ -96,12 +96,15 @@ public class ViewTasksFragment extends Fragment {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Task taskObj = document.toObject(Task.class);
 
-                    // Create and append TextView for each task on fragment_view_tasks.xml
-                    TextView taskTextView = new TextView(getActivity());
-                    taskTextView.setText(taskObj.getTitle() + "\n" + taskObj.getDescription());
-                    taskTextView.setPadding(0,0,0,16);
+                    View taskCardView = LayoutInflater.from(getActivity()).inflate(R.layout.item_task_card, linearLayoutTasks, false);
+                    TextView taskTitleTextView = taskCardView.findViewById(R.id.textViewTitle);
+                    TextView taskDescriptionTextView = taskCardView.findViewById(R.id.textViewDescription);
 
-                    linearLayoutTasks.addView(taskTextView);
+                    // Create and append TextView for each task on fragment_view_tasks.xml
+                    taskTitleTextView.setText(taskObj.getTitle());
+                    taskDescriptionTextView.setText(taskObj.getDescription());
+
+                    linearLayoutTasks.addView(taskCardView);
                 }
             }
         });
