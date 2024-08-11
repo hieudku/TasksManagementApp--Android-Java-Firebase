@@ -13,15 +13,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    // Declare fields
+    private EditText editTextEmail;
+    private EditText editTextPassword;
+    private Button buttonLogin;
+    private Button buttonRegister;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+
         // Start Firebase
         FirebaseApp.initializeApp(this);
 
@@ -39,22 +55,41 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        // Initialize Firebase auth
+        mAuth = FirebaseAuth.getInstance();
+
+        editTextEmail = findViewById(R.id.email);
+        editTextPassword = findViewById(R.id.password);
+        buttonLogin = findViewById(R.id.login_button);
+        buttonRegister = findViewById(R.id.register_button);
 
         // Gather button UI element by id
-        Button loginButton = findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        Button buttonLogin = findViewById(R.id.login_button);
+
+        // Log in logic here
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // Get username and password entered by the user
-                String username = ((EditText) findViewById(R.id.username)).getText().toString();
-                String password = ((EditText) findViewById(R.id.password)).getText().toString();
+                String email = editTextEmail.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
 
-                // Validate username and password entered
-                if (username.equals("admin") && password.equals("1234")) {
+                // Prompt when either email or passwrod is empty
+                if (email.isEmpty()) {
+                    editTextEmail.setError("Email is required to log in");
+                    editTextEmail.requestFocus();
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    editTextPassword.setError("Password is required to log in");
+                    editTextPassword.requestFocus();
+                    return;
+                }
+
+                // *Test* username and password entered - admin always log in successful ---- TO REMOVE LATER
+                if (email.equals("admin") && password.equals("1234")) {
                     // Successful login
                     Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, MenuActivity.class);
@@ -64,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                     // Failed login
                     Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                 }
+                // Call method with email and password entered as parameter to authenticate user's credentials
+                loginUser(email, password);
             }
         });
 
@@ -71,6 +108,25 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+    }
+
+    // LOG IN -- send email and password to authenticate
+    private void loginUser(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) { // If login is successful
+                FirebaseUser user = mAuth.getCurrentUser();
+                // Then let user know
+                Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+
+                // Then take user to Menu/Dashboard activity
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else { // Sign in unsuccessful, then exception
+                Toast.makeText(MainActivity.this, "Login failed" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
