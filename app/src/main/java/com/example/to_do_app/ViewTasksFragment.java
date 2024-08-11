@@ -98,7 +98,10 @@ public class ViewTasksFragment extends Fragment {
 
                     // Create and append TextView for each task on fragment_view_tasks.xml
                     TextView taskTextView = new TextView(getActivity());
-                    taskTextView.setText(taskObj.getTitle());
+                    taskTextView.setText(taskObj.getTitle() + "\n" + taskObj.getDescription());
+                    taskTextView.setPadding(0,0,0,16);
+
+                    linearLayoutTasks.addView(taskTextView);
                 }
             }
         });
