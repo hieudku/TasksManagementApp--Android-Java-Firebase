@@ -14,4 +14,5 @@
     <string name="task_description">Task Description</string>
     <string name="task_name">Task Name</string>
     <string name="save_task">Save Task</string>
+    <string name="emailHint">Email</string>
 </resources>

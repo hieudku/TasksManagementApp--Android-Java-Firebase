@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Todoapp"
         tools:targetApi="31" >
         <activity
-            android:name=".ViewTaskActivity"
+            android:name=".ViewTasksFragment"
             android:exported="false" />
         <activity
-            android:name=".AddTaskActivity"
+            android:name=".AddTaskFragment"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
