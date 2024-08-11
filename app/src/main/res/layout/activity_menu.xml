@@ -21,6 +21,13 @@
         android:layout_height="wrap_content"
         android:text="@string/viewTaskBtn"/>
 
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:layout_marginTop="20dp"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

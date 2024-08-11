@@ -15,4 +15,5 @@
     <string name="task_name">Task Name</string>
     <string name="save_task">Save Task</string>
     <string name="emailHint">Email</string>
+    <string name="logout">Logout</string>
 </resources>
