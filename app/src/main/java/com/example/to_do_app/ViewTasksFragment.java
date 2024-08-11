@@ -1,12 +1,22 @@
 package com.example.to_do_app;
-
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +24,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ViewTasksFragment extends Fragment {
+    // Declare fields
+    private RecyclerView recyclerViewTasks;
+    private List<Task> taskList;
+    private FirebaseFirestore db;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,10 +69,44 @@ public class ViewTasksFragment extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater,@Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_tasks, container, false);
+        View view = inflater.inflate(R.layout.fragment_view_tasks, container, false);
+
+        // Assign to instance of firestore
+        db = FirebaseFirestore.getInstance();
+
+        // Initialize recycler view by ID
+        recyclerViewTasks = view.findViewById(R.id.recyclerViewTasks);
+        recyclerViewTasks.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        taskList = new ArrayList<>();
+
+        // Load tasks from Firestore
+        loadTasks();
+        return view;
+    }
+
+    private void loadTasks() {
+        // Query tasks collection from Firestore orderedby time created
+        db.collection("tasks").orderBy("timestamp").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@androidx.annotation.Nullable QuerySnapshot value, @androidx.annotation.Nullable FirebaseFirestoreException error) {
+                if (error != null) { // If error occurs just return
+                    return;
+                }
+
+                taskList.clear();
+
+                for (QueryDocumentSnapshot doc : value) {
+                    Task task = doc.toObject(Task.class);
+                    taskList.add(task);
+                }
+
+            }
+        });
     }
 }
