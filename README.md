@@ -35,5 +35,8 @@ I appreciate your interest and involvement in this project as it continues to de
 Note: Screenshots of the current interface will be included with this release.
 ## Screenshots
 ![login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
+![menu-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen%201.0.png)
+![](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen-frag-view%201.0.png)
+![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-panel.png)
+![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-query.png)
 
-Let me know if there's anything else you'd like to adjust or add!
