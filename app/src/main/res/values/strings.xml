@@ -18,4 +18,7 @@
     <string name="logout">Logout</string>
     <string name="tasks_list">Tasks will be listed here</string>
     <string name="myApp_title">Remindo</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_description_card">Task Description</string>
+    <string name="task_title_card">Task Title</string>
 </resources>
