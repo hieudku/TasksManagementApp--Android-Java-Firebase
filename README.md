@@ -1,4 +1,6 @@
 # Release Notes - v0.4.0
+![Menu-login](v0.2.0_Screenshot_Pixel8Pro/v0.2.0_Main_login_screen.png)
+
 ## What’s New:
 - CRUD Operations are now fully functional, making task management more efficient.
 
