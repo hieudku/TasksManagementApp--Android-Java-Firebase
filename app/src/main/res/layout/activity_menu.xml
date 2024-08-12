@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/card"
     tools:context=".MenuActivity">
 
 
@@ -14,15 +15,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40dp">
+
         <Button
             android:id="@+id/add_task_button"
             android:textSize="12sp"
             android:layout_width="120dp"
             android:layout_marginEnd="10dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/babyRoseElements"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/oxygen"
+            android:backgroundTint="@color/title_dark_cherry"
             android:text="@string/addTaskBtn"/>
 
         <Button
@@ -31,8 +34,9 @@
             android:layout_width="120dp"
             android:layout_marginEnd="10dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/babyRoseElements"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/oxygen"
+            android:backgroundTint="@color/title_dark_cherry"
             android:text="@string/viewTaskBtn"/>
 
         <Button
@@ -40,8 +44,9 @@
             android:textSize="12sp"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/babyRoseElements"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/oxygen"
+            android:backgroundTint="@color/title_dark_cherry"
             android:text="@string/logout" />
     </LinearLayout>
     <FrameLayout
