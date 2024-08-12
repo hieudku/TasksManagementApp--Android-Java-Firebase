@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonLogin;
     private Button buttonRegister;
     private FirebaseAuth mAuth;
-
+    private FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        
+
         // Start Firebase
         FirebaseApp.initializeApp(this);
 
@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
                         Log.w("Firestore", "Error getting documents.", task.getException());
                     }
                 });
+
+        // Test user auth
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Log.d("AddTaskFragment", "User is authenticated with UID" + user.getUid());
+        } else {
+            Log.d("AddTaskFragment", "User not authenticated");
+        }
 
         // Initialize Firebase auth
         mAuth = FirebaseAuth.getInstance();
