@@ -1,30 +1,18 @@
-# Release Notes for v0.2.0
-## Release Date: 12 Aug 2024
+# Release Notes - v0.4.0
+## What’s New:
+- CRUD Operations are now fully functional, making task management more efficient.
 
-## Overview
-This v0.2.0 release marks a significant step forward in the development of my project, applying several key features and setting the foundation for future development. This update includes the initial implementation of user authentication, task management, and the integration of Firebase for fast, lightweight and secure data storage.
+- Firebase Integration: Complete integration with Firebase for secure handling of user data and tasks. Firebase Authentication is used for login, registration, and logout, with tasks securely stored in Firestore.
 
-### Features Added
-- User Requirements: User requirements have been fully documented (docs will be uploaded soon).
-- System Design: Completed system design with class diagrams and ERDs.
-- Menu Activity: Implemented with a fragment container for managing tasks, including adding and viewing tasks.
-- Main Activity: Functions as the Login Activity, handling user authentication.
-- Tasks Fragment: Added functionalities for adding and viewing tasks.
-- Date and Time Stamp: Tasks now include a date and time stamp upon creation.
-- User Registration: Implemented user registration to Firebase.
-- Task Creation: Tasks can now be added and stored in Firestore (Create operation).
-- Firebase Authentication: Integrated Firebase authentication for user login with email and password.
+- Enhanced UI/UX: The user interface has been refined for a smoother experience.
 
-### Features to be Added
-- Password Confirmation: Adding password confirmation during user registration.
-- Task Viewing (Read): Enhance the task viewing feature with data retrieval from Firestore.
-- Task Editing (Update): Implement the ability to edit tasks stored in Firestore.
-- Checkbox and removal option when a task is done (Delete).
-- Task Deletion (Delete): Add functionality for deleting tasks from Firestore.
-- Location Support: Optional feature to include location data with tasks.
-- Camera Integration: Enable task-specific photo capture, storing images in the Firestore tasks collection.
-- Testing: Plan for unit and automated testing, including concurrent tests.
-- Improving UX & UI.
+- Task Management: Tasks can now be viewed, added, edited, and deleted directly within the app. Task cards are displayed in a clean, organized format for easy navigation and management.
+
+### Upcoming Features:
+-Password Confirmation: Adding a password confirmation step during registration.
+-Location Support: Exploring the addition of location-based features.
+-Camera Integration: Plans to integrate camera functionality for adding images to tasks.
+-Testing: Ongoing work on unit and automated testing to ensure reliability and performance.
 
 ### Documentation
 For further guidance and detailed documentation, please refer to the following resources:
@@ -33,12 +21,4 @@ For further guidance and detailed documentation, please refer to the following r
 - Firebase Documentation: Firebase Docs --> https://firebase.google.com/docs/
 I appreciate your interest and involvement in this project as it continues to develop. Feedback is always welcome as I work towards improving and adding new features.
 
-Note: Screenshots of the current interface will be included with this release.
-## Screenshots
-- Login Screen <br />![login-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/login-screen%201.0.png)
-- Menu Screen with Add Task open <br />![menu-screen 1.0.png](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen%201.0.png)
-- Menu Screen with View Task open <br />![](https://github.com/hieudku/TasksManagementApp/blob/master/menu-screen-frag-view%201.0.png)
-- Firestore database <br />![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-panel.png)
-- Firestore query table <br />![](https://github.com/hieudku/TasksManagementApp/blob/master/firestore-query.png)
-- Firebase Authentication (Creating account, Login)<br /> ![](https://github.com/hieudku/TasksManagementApp/blob/master/auth-firebase.png)
 
