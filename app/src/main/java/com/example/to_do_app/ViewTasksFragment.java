@@ -1,4 +1,5 @@
 package com.example.to_do_app;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
@@ -103,6 +105,7 @@ public class ViewTasksFragment extends Fragment {
         }
         db.collection("users").document(user.getUid()).collection("tasks").orderBy("timestamp").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                linearLayoutTasks.removeAllViews();
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Task taskObj = document.toObject(Task.class);
 
@@ -130,12 +133,39 @@ public class ViewTasksFragment extends Fragment {
                     // Set click event on delete button to remove tasks
                     deleteButton.setOnClickListener(v -> {
                         // method here to delete
+                        confirmDeleteTask(taskObj.getId());
                     });
 
                     linearLayoutTasks.addView(taskCardView);
                 }
             }
         });
+    }
+    // Method to delete task from Firestore
+    private void deleteTask(String taskId) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            db.collection("users").document(user.getUid()).collection("tasks").document(taskId)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(getActivity(), "Task deleted", Toast.LENGTH_SHORT).show();
+                        loadTasks();
+                        onResume();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(getActivity(), "Error deleting task", Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    // Dialog box to confirm if user want to delele task
+    private void confirmDeleteTask(String taskId) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Delete Task")
+                .setMessage("Are you sure you want to delete this task?")
+                .setPositiveButton("Yes", (dialog, which) -> deleteTask(taskId))
+                .setNegativeButton("No", null)
+                .show();
     }
     // This method ensure the UI is updated correctly when fragments are viewed
     @Override
