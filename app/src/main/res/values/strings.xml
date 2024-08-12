@@ -24,4 +24,7 @@
     <string name="my_tasks">My Tasks</string>
     <string name="edit_task">Edit Task</string>
     <string name="delete_task">Delete Task</string>
+    <string name="task_title_edit">Task Title</string>
+    <string name="task_description_edit">Task Description</string>
+    <string name="update_task">Update Task</string>
 </resources>
