@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.Timestamp;
 import java.util.HashMap;
@@ -28,6 +32,7 @@ public class AddTaskFragment extends Fragment {
     private Button buttonSaveTask;
     private String taskId;
     private FirebaseFirestore db;
+    private FirebaseUser user;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -77,10 +82,15 @@ public class AddTaskFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_task, container, false);
 
+        // Initialize user
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Toast.makeText(getActivity(), "User not authenticated", Toast.LENGTH_SHORT).show();
+            return view;
+        }
+        // Initialize UI components
         // Get instance of firestore
         db = FirebaseFirestore.getInstance();
-
-        // Initialize UI components
         editTextTitle = view.findViewById(R.id.edit_task_name);
         editTextDescription = view.findViewById(R.id.edit_task_description);
         buttonSaveTask = view.findViewById(R.id.button_save_task);
@@ -99,6 +109,11 @@ public class AddTaskFragment extends Fragment {
     private void saveTask() {
         String title = editTextTitle.getText().toString().trim();
         String description = editTextDescription.getText().toString().trim();
+        Log.d("SaveTask", "Current user: " + user);
+        if (user == null) {
+            Toast.makeText(getActivity(), "User not authenticated", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // Handle empty title from user
         if (title.isEmpty()) {
@@ -115,7 +130,7 @@ public class AddTaskFragment extends Fragment {
         task.put("description", description);
         task.put("timestamp", Timestamp.now());
 
-        db.collection("tasks").document(taskId).set(task).addOnSuccessListener(aVoid -> {
+        db.collection("users").document(user.getUid()).collection("tasks").document(taskId).set(task).addOnSuccessListener(aVoid -> {
            Toast.makeText(getActivity(), "Task added", Toast.LENGTH_SHORT).show();
            // Clear text boxes after task is added
            editTextTitle.setText("");
