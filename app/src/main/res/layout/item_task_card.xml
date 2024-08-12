@@ -11,9 +11,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
+        <!-- Task Title -->
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
             android:textStyle="bold"
             android:textColor="@android:color/black" />
 
+        <!-- Task Description -->
         <TextView
             android:id="@+id/textViewDescription"
             android:layout_width="wrap_content"
@@ -31,6 +33,37 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_marginTop="4dp"
             android:textColor="@android:color/darker_gray" />
+
+        <!-- Horizontal LinearLayout for Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="8dp">
+
+            <!-- Edit Icon -->
+            <ImageButton
+                android:id="@+id/buttonEditTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_edit_24"
+                android:contentDescription="@string/edit_task"
+                android:padding="8dp"/>
+
+            <!-- Delete Icon -->
+            <ImageButton
+                android:id="@+id/buttonDeleteTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_delete_24"
+                android:contentDescription="@string/delete_task"
+                android:padding="8dp"
+                app:tint="@android:color/holo_red_dark" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

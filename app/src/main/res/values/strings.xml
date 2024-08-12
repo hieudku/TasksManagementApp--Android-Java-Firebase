@@ -22,4 +22,6 @@
     <string name="task_description_card">Task Description</string>
     <string name="task_title_card">Task Title</string>
     <string name="my_tasks">My Tasks</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="delete_task">Delete Task</string>
 </resources>
