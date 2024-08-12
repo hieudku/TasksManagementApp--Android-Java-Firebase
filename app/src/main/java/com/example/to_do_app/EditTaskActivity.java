@@ -78,7 +78,6 @@ public class EditTaskActivity extends AppCompatActivity {
                 .update(task)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(EditTaskActivity.this, "Task updated", Toast.LENGTH_SHORT).show();
-                    ;
                     finish(); // If updated successful, take user back to previous activity
                 })
         .addOnFailureListener(e -> {

@@ -137,10 +137,18 @@ public class ViewTasksFragment extends Fragment {
             }
         });
     }
+    // This method ensure the UI is updated correctly when fragments are viewed
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loadTasks();
+    }
     // This method will call loadTask() method to load updated tasks as soon as the user return from the Edit Task activity.
     @Override
     public void onResume() {
         super.onResume();
+        linearLayoutTasks.removeAllViews();
         loadTasks();
     }
+
 }
