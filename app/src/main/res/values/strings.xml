@@ -15,7 +15,7 @@
     <string name="task_name">Task Name</string>
     <string name="save_task">Add</string>
     <string name="emailHint">Email</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Log out</string>
     <string name="tasks_list">Tasks will be listed here</string>
     <string name="myApp_title">Remindo</string>
     <string name="task_title">Task Title</string>
@@ -27,4 +27,5 @@
     <string name="task_title_edit">Task Title</string>
     <string name="task_description_edit">Task Description</string>
     <string name="update_task">Update Task</string>
+    <string name="taskflo">TaskFlo</string>
 </resources>

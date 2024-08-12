@@ -6,6 +6,7 @@
     android:layout_margin="8dp"
     android:elevation="4dp"
     android:padding="16dp"
+
     app:cardCornerRadius="8dp">
 
     <LinearLayout
