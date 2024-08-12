@@ -136,7 +136,11 @@ public class ViewTasksFragment extends Fragment {
                 }
             }
         });
-
-
+    }
+    // This method will call loadTask() method to load updated tasks as soon as the user return from the Edit Task activity.
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadTasks();
     }
 }

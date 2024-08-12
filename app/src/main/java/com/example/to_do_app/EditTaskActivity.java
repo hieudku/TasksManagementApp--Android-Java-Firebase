@@ -2,6 +2,7 @@ package com.example.to_do_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     private void updateTask() {
+
         String title = editTextTitle.getText().toString().trim();
         String description = editTextDescription.getText().toString().trim();
 
@@ -76,6 +78,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 .update(task)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(EditTaskActivity.this, "Task updated", Toast.LENGTH_SHORT).show();
+                    ;
                     finish(); // If updated successful, take user back to previous activity
                 })
         .addOnFailureListener(e -> {
