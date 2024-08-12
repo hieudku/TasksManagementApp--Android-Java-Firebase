@@ -11,10 +11,13 @@
 - Task Management: Tasks can now be viewed, added, edited, and deleted directly within the app. Task cards are displayed in a clean, organized format for easy navigation and management.
 
 ### Upcoming Features:
--Password Confirmation: Adding a password confirmation step during registration.
--Location Support: Exploring the addition of location-based features.
--Camera Integration: Plans to integrate camera functionality for adding images to tasks.
--Testing: Ongoing work on unit and automated testing to ensure reliability and performance.
+- Password Confirmation: Adding a password confirmation step during registration.
+  
+- Location Support: Exploring the addition of location-based features.
+  
+- Camera Integration: Plans to integrate camera functionality for adding images to tasks.
+  
+- Testing: Ongoing work on unit and automated testing to ensure reliability and performance.
 
 ### Documentation
 For further guidance and detailed documentation, please refer to the following resources:
