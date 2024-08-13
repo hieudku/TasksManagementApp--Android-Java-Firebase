@@ -10,7 +10,7 @@
 
 - Task Management: Tasks can now be viewed, added, edited, and deleted directly within the app. Task cards are displayed in a clean, organized format for easy management.
 
-### Upcoming Features:
+## Upcoming Features:
 - Password Confirmation: Adding a password confirmation step during registration.
   
 - Testing: Ongoing work on unit and automated testing to ensure reliability and performance.
@@ -23,12 +23,13 @@
 
 - Projects which are collections of tasks, allowing users to organize tasks more neatly.
 
-### Documentation
-For further guidance and detailed documentation, please refer to the following resources:
+## Documentation
+For further guidance and detailed documentation, please refer to the following resources:<br />
 
 - Android Developers Documentation: Android Docs --> https://developer.android.com/guide/
 - Firebase Documentation: Firebase Docs --> https://firebase.google.com/docs/
-  <br />
+<br />
+<br />
 I appreciate your interest and involvement in this project as it continues to develop. Feedback is welcome as I work towards improving the app.
 
 
