@@ -28,6 +28,7 @@ For further guidance and detailed documentation, please refer to the following r
 
 - Android Developers Documentation: Android Docs --> https://developer.android.com/guide/
 - Firebase Documentation: Firebase Docs --> https://firebase.google.com/docs/
+  <br />
 I appreciate your interest and involvement in this project as it continues to develop. Feedback is welcome as I work towards improving the app.
 
 
