@@ -31,4 +31,5 @@
     <string name="email_registration">Email</string>
     <string name="password_registration">Password</string>
     <string name="confirm_password_registration">Confirm password</string>
+    <string name="register_button_popup">Register</string>
 </resources>
