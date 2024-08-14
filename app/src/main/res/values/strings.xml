@@ -28,4 +28,7 @@
     <string name="task_description_edit">Task Description</string>
     <string name="update_task">Update Task</string>
     <string name="taskflo">TaskFlo</string>
+    <string name="email_registration">Email</string>
+    <string name="password_registration">Password</string>
+    <string name="confirm_password_registration">Confirm password</string>
 </resources>
