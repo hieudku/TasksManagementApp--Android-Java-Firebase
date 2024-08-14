@@ -21,7 +21,7 @@
 
 - Dark mode.
 
-- Projects which are collections of tasks, allowing users to organize tasks more neatly.
+- Projects cards - collections of tasks, allowing users to organize tasks more neatly.
 
 ## Documentation
 For further guidance and detailed documentation, please refer to the following resources:<br />
