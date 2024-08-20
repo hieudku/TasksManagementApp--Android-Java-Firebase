@@ -37,8 +37,8 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="@string/save_task"
-            android:backgroundTint="@color/babyRoseElements"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/title_dark_cherry"
+            android:textColor="@color/grey"
             android:layout_marginTop="16dp" />
     </LinearLayout>
 </ScrollView>
