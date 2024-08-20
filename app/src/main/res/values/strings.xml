@@ -32,4 +32,5 @@
     <string name="password_registration">Password</string>
     <string name="confirm_password_registration">Confirm password</string>
     <string name="register_button_popup">Register</string>
+    <string name="register_title">Create an account</string>
 </resources>

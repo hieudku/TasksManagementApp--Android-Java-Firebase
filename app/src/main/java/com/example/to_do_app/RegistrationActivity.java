@@ -36,10 +36,6 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_popup);
 
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
-        String confirmPass = editTextPassConfirm.getText().toString().trim();
-
         mAuth = FirebaseAuth.getInstance();
         buttonRegister = findViewById(R.id.btnRegister);
         editTextEmail = findViewById(R.id.emailRegistration);
@@ -49,6 +45,9 @@ public class RegistrationActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String email = editTextEmail.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
+                String confirmPass = editTextPassConfirm.getText().toString().trim();
                 // Check for required fields/format
                 if (email.isEmpty()) {
                     editTextEmail.setError("Email is required");
@@ -69,7 +68,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 registerUser(email, password);
             }
         });
-
 
     }
     // REGISTER AUTH -- email and password as parameters to register

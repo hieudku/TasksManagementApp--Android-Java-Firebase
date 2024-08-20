@@ -4,7 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="18dp">
+    android:padding="18dp"
+    android:background="@drawable/ocean_blue_copy_space_abstract_paper_waves">
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/register_title"
+        android:textSize="30sp"/>
+
     <EditText
         android:id="@+id/emailRegistration"
         android:inputType="textEmailAddress"
