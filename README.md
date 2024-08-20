@@ -1,4 +1,7 @@
-# v0.4.0
+## v0.4.1
+- Added a separate view for registration, require user to confirm password upon creating an account.
+
+## v0.4.0
 
 - CRUD Operations are now fully functional.
 
@@ -9,7 +12,6 @@
 - Task Management: Tasks can now be viewed, added, edited, and deleted directly within the app..
 
 ## To do:
-- Password Confirmation: Adding a password confirmation step during registration.
   
 - Testing: Ongoing work on unit and automated testing to ensure reliability and performance.
 
