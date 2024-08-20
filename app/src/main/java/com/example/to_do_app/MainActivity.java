@@ -107,23 +107,9 @@ public class MainActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = editTextEmail.getText().toString().trim();
-                String password = editTextPassword.getText().toString().trim();
-
-                // Check for required fields/format
-                if (email.isEmpty()) {
-                    editTextEmail.setError("Email is required");
-                    editTextEmail.requestFocus();
-                    return;
-                }
-
-                if (password.isEmpty()) {
-                    editTextPassword.setError("Password is required");
-                    editTextPassword.requestFocus();
-                    return;
-                }
-                // Call method with email and password entered as parameters to authenticate user's registration
-                registerUser(email, password);
+                Intent signUp = new Intent(MainActivity.this, RegistrationActivity.class );
+                startActivity(signUp);
+                finish();
             }
         });
 
@@ -149,32 +135,6 @@ public class MainActivity extends AppCompatActivity {
             }
             else { // Sign in unsuccessful, then exception
                 Toast.makeText(MainActivity.this, "Login failed" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    // REGISTER AUTH -- email and password as parameters to register
-    private void registerUser(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
-            if (task.isSuccessful()) { // If registration is successful
-                FirebaseUser user = mAuth.getCurrentUser();
-                if (user != null) {
-                    user.sendEmailVerification().addOnCompleteListener(emailTask -> {
-                       if (emailTask.isSuccessful()) {
-                           Toast.makeText(MainActivity.this, "Registration successful! Please check your email for verification.", Toast.LENGTH_LONG).show();
-                       }
-                       else {
-                           Toast.makeText(MainActivity.this, "Failed to send email.", Toast.LENGTH_SHORT).show();
-                       }
-                    });
-                }
-
-                // Then take user to Menu/Dashboard activity
-                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(MainActivity.this, "Registration failed: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

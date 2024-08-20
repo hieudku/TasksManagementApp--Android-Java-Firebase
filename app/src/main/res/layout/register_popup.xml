@@ -27,6 +27,7 @@
         android:hint="@string/confirm_password_registration"/>
 
     <Button
+        android:id="@+id/btnRegister"
         android:layout_marginTop="18dp"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
