@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/card"
+    android:background="@color/darksalmon"
     tools:context=".MenuActivity">
 
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
             android:fontFamily="@font/oxygen"
-            android:backgroundTint="@color/title_dark_cherry"
+            android:backgroundTint="@color/teal"
             android:text="@string/addTaskBtn"/>
 
         <Button
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
             android:fontFamily="@font/oxygen"
-            android:backgroundTint="@color/title_dark_cherry"
+            android:backgroundTint="@color/teal"
             android:text="@string/viewTaskBtn"/>
 
         <Button
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
             android:fontFamily="@font/oxygen"
-            android:backgroundTint="@color/title_dark_cherry"
+            android:backgroundTint="@color/maroon"
             android:text="@string/logout" />
     </LinearLayout>
     <FrameLayout
