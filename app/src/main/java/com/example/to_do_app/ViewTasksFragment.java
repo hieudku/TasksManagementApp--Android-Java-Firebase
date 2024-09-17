@@ -112,7 +112,7 @@ public class ViewTasksFragment extends Fragment {
         });
     }
 
-    private void deleteTask(String taskId) {
+    void deleteTask(String taskId) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             db.collection("users").document(user.getUid()).collection("tasks").document(taskId)

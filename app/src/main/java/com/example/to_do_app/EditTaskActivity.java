@@ -101,4 +101,13 @@ public class EditTaskActivity extends AppCompatActivity {
                     Toast.makeText(EditTaskActivity.this, "Error updating task", Toast.LENGTH_SHORT).show();
                 });
     }
+
+    public Map<String, Object> createUpdatedTaskMap(String title, String description, Timestamp dueDate) {
+        Map<String, Object> task = new HashMap<>();
+        task.put("title", title);
+        task.put("description", description);
+        task.put("dueDate", dueDate);
+        task.put("timestamp", new Timestamp(new Date())); // current time
+        return task;
+    }
 }
