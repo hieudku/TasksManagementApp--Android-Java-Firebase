@@ -31,6 +31,15 @@
             android:lines="4"
             android:maxLines="6" />
 
+
+        <!-- New DatePicker for due date -->
+        <DatePicker
+            android:id="@+id/datepicker_due_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="true"
+            android:datePickerMode="spinner" />
+
         <!-- Save Task Button -->
         <Button
             android:id="@+id/button_save_task"

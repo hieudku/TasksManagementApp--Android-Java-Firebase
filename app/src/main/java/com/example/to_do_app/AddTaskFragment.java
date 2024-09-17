@@ -25,55 +25,16 @@ import java.util.Map;
  * Use the {@link AddTaskFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+import android.widget.DatePicker;
+
 public class AddTaskFragment extends Fragment {
     // Fields
     private EditText editTextTitle;
     private EditText editTextDescription;
+    private DatePicker datePickerDueDate; // New DatePicker field
     private Button buttonSaveTask;
-    private String taskId;
     private FirebaseFirestore db;
     private FirebaseUser user;
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AddTaskFragment() {
-        // Required empty public constructor
-    }
-
-
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddTaskFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AddTaskFragment newInstance(String param1, String param2) {
-        AddTaskFragment fragment = new AddTaskFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Nullable
     @Override
@@ -88,55 +49,63 @@ public class AddTaskFragment extends Fragment {
             Toast.makeText(getActivity(), "User not authenticated", Toast.LENGTH_SHORT).show();
             return view;
         }
+
         // Initialize UI components
-        // Get instance of firestore
         db = FirebaseFirestore.getInstance();
         editTextTitle = view.findViewById(R.id.edit_task_name);
         editTextDescription = view.findViewById(R.id.edit_task_description);
+        datePickerDueDate = view.findViewById(R.id.datepicker_due_date); // Initialize DatePicker
         buttonSaveTask = view.findViewById(R.id.button_save_task);
 
         // Set up the click listener for the Save button
         buttonSaveTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // When Add task button is clicked, call saveTask method to add task to db
                 saveTask();
             }
         });
+
         return view;
     }
 
     private void saveTask() {
         String title = editTextTitle.getText().toString().trim();
         String description = editTextDescription.getText().toString().trim();
-        Log.d("SaveTask", "Current user: " + user);
         if (user == null) {
             Toast.makeText(getActivity(), "User not authenticated", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Handle empty title from user
         if (title.isEmpty()) {
             editTextTitle.setError("Title cannot be empty");
             editTextTitle.requestFocus();
             return;
         }
 
-        // Id, title, description, timestamp into Hashmap in Firestore db
-        String taskId = db.collection("tasks").document().getId(); // Generate unique ID for each task
+        // Get the selected date from DatePicker
+        int day = datePickerDueDate.getDayOfMonth();
+        int month = datePickerDueDate.getMonth();
+        int year = datePickerDueDate.getYear();
+        Timestamp dueDate = new Timestamp(new java.util.Date(year - 1900, month, day));
+
+        // Create task map with due date
+        String taskId = db.collection("tasks").document().getId();
         Map<String, Object> task = new HashMap<>();
         task.put("id", taskId);
         task.put("title", title);
         task.put("description", description);
+        task.put("dueDate", dueDate);
         task.put("timestamp", Timestamp.now());
 
-        db.collection("users").document(user.getUid()).collection("tasks").document(taskId).set(task).addOnSuccessListener(aVoid -> {
-           Toast.makeText(getActivity(), "Task added", Toast.LENGTH_SHORT).show();
-           // Clear text boxes after task is added
-           editTextTitle.setText("");
-           editTextDescription.setText("");
-        }).addOnFailureListener(e -> {
-           Toast.makeText(getActivity(), "Error adding task", Toast.LENGTH_SHORT).show();
-        });
+        db.collection("users").document(user.getUid()).collection("tasks").document(taskId)
+                .set(task)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(getActivity(), "Task added", Toast.LENGTH_SHORT).show();
+                    editTextTitle.setText("");
+                    editTextDescription.setText("");
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(getActivity(), "Error adding task", Toast.LENGTH_SHORT).show();
+                });
     }
 }
