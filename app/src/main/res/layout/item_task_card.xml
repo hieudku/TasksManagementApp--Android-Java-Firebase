@@ -37,6 +37,14 @@
             android:layout_marginTop="4dp"
             android:textColor="@color/title_dark_cherry" />
 
+        <TextView
+            android:id="@+id/textViewDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Due Date"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginTop="4dp"/>
+
         <!-- Horizontal LinearLayout for Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,6 +52,7 @@
             android:orientation="horizontal"
             android:gravity="end"
             android:layout_marginTop="8dp">
+
 
             <!-- Edit Icon -->
             <ImageButton
