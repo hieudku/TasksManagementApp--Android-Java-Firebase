@@ -45,6 +45,7 @@ public class RegistrationActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RegistrationActivity.this, RegistrationActivity.class);
                 String email = editTextEmail.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
                 String confirmPass = editTextPassConfirm.getText().toString().trim();
