@@ -12,4 +12,15 @@
     <color name="teal">#008080</color>
     <color name="maroon">#800000</color>
     <color name="forrestgreen">	#228B22</color>
+
+    <color name="backgroundColor">#FFFFFF</color> <!-- White background -->
+    <color name="textColor">#000000</color>       <!-- Black text -->
+    <color name="buttonColor">#03DAC5</color>     <!-- Teal button background -->
+    <color name="logoutButtonColor">#B00020</color> <!-- Red logout button background -->
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <!-- Background Colors -->
+    <color name="backgroundLight">#FFFFFF</color>
+    <color name="textLight">#000000</color>
 </resources>
