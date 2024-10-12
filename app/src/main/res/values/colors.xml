@@ -23,4 +23,9 @@
     <!-- Background Colors -->
     <color name="backgroundLight">#FFFFFF</color>
     <color name="textLight">#000000</color>
+
+    <!-- Importance Colors -->
+    <color name="importanceLow">#4CAF50</color>    <!-- Green for Low -->
+    <color name="importanceMedium">#FFC107</color> <!-- Yellow for Medium -->
+    <color name="importanceHigh">#F44336</color>   <!-- Red for High -->
 </resources>

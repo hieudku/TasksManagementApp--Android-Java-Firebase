@@ -39,4 +39,9 @@
         <item>Medium</item>
         <item>High</item>
     </string-array>
+
+    <string-array name="sorting_options">
+        <item>Sort by Due Date</item>
+        <item>Sort by Importance</item>
+    </string-array>
 </resources>

@@ -8,7 +8,7 @@ public class Task {
     private String title;
     private String description;
     private Timestamp dueDate;  // New field for due date
-    private int importance; // New field for importance level (1 to 5)
+    private Integer importance; // New field for importance level (1 to 5)
 
     // Default constructor for DataSnapshot.getValue(Task.class)
     public Task() {
@@ -56,5 +56,8 @@ public class Task {
         this.dueDate = dueDate;
     }
 
+    public Integer getImportance() {
+        return importance;
+    }
     public void setImportance(int importance) { this.importance = importance; }
 }
