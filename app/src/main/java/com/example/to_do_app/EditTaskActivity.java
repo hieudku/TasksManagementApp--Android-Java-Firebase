@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,26 +23,35 @@ public class EditTaskActivity extends AppCompatActivity {
     private EditText editTextTitle;
     private EditText editTextDescription;
     private DatePicker datePickerDueDate;
+    private Spinner spinnerImportance;  // New spinner for importance level
     private Button buttonUpdateTask;
     private FirebaseFirestore db;
     private FirebaseUser user;
     private String taskId;
     private Timestamp dueDate;
+    private Integer importance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
 
-        // Find title, edit button, description, and date picker
+        // Find title, description, due date picker, importance spinner, and update button
         editTextTitle = findViewById(R.id.edit_task_name);
         editTextDescription = findViewById(R.id.edit_task_description);
         datePickerDueDate = findViewById(R.id.datepicker_due_date);
+        spinnerImportance = findViewById(R.id.spinnerImportance); // Initialize Spinner for importance
         buttonUpdateTask = findViewById(R.id.button_update_task);
 
         // Initialize Firebase database and user
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Setup spinner with importance levels
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.importance_levels, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerImportance.setAdapter(adapter);
 
         // Get task details from intent
         Intent intent = getIntent();
@@ -48,6 +59,10 @@ public class EditTaskActivity extends AppCompatActivity {
             taskId = intent.getStringExtra("taskId");
             editTextTitle.setText(intent.getStringExtra("taskTitle"));
             editTextDescription.setText(intent.getStringExtra("taskDescription"));
+
+            // Retrieve and set importance level
+            importance = intent.getIntExtra("taskImportance", 0);  // Default to 0 (Low)
+            spinnerImportance.setSelection(importance);
 
             // Retrieve due date as long and convert it back to Timestamp
             long dueDateMillis = intent.getLongExtra("taskDueDate", -1);
@@ -86,11 +101,17 @@ public class EditTaskActivity extends AppCompatActivity {
         int year = datePickerDueDate.getYear();
         dueDate = new Timestamp(new Date(year - 1900, month, day));
 
+        // Get the selected importance level from Spinner
+        importance = spinnerImportance.getSelectedItemPosition();
+
+        // Create task map with updated data
         Map<String, Object> task = new HashMap<>();
         task.put("title", title);
         task.put("description", description);
         task.put("dueDate", dueDate);
+        task.put("importance", importance);  // Update importance level
 
+        // Update task in Firestore
         db.collection("users").document(user.getUid()).collection("tasks").document(taskId)
                 .update(task)
                 .addOnSuccessListener(aVoid -> {
@@ -107,7 +128,8 @@ public class EditTaskActivity extends AppCompatActivity {
         task.put("title", title);
         task.put("description", description);
         task.put("dueDate", dueDate);
-        task.put("timestamp", new Timestamp(new Date())); // current time
+        task.put("importance", importance);  // Ensure importance is included
+        task.put("timestamp", new Timestamp(new Date())); // Current time
         return task;
     }
 }

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal"
+
     android:layout_marginTop="40dp"
     android:background="@color/backgroundColor">
 
@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/edit_task_description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:fontFamily="@font/oxygen"
         android:hint="@string/task_description_edit"
         android:layout_marginTop="8dp"/>
@@ -30,6 +30,16 @@
         android:layout_height="wrap_content"
         android:calendarViewShown="true"
         android:datePickerMode="spinner" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Importance Level"/>
+    <Spinner
+        android:id="@+id/spinnerImportance"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:entries="@array/importance_levels" />
 
     <Button
         android:id="@+id/button_update_task"
