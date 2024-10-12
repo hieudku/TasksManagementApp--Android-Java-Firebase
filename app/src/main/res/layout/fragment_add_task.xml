@@ -39,7 +39,15 @@
             android:layout_height="wrap_content"
             android:calendarViewShown="true"
             android:datePickerMode="spinner" />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Importance Level"/>
+        <Spinner
+            android:id="@+id/spinner_importance"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:entries="@array/importance_levels" />
         <!-- Save Task Button -->
         <Button
             android:id="@+id/button_save_task"
