@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:gravity="center_horizontal"
     android:layout_marginTop="40dp"
-    android:background="@color/darksalmon">
+    android:background="@color/backgroundColor">
 
     <EditText
         android:id="@+id/edit_task_name"
@@ -38,5 +38,6 @@
         android:text="@string/update_task"
         android:fontFamily="@font/oxygen"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/forrestgreen"/>
+        android:backgroundTint="@color/buttonColor"
+        android:textColor="@color/textColor"/>
 </LinearLayout>
