@@ -23,8 +23,7 @@
             android:text="@string/task_title_card"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold"
-            android:fontFamily="@font/oxygen_bold"
-            android:textColor="@android:color/black" />
+            android:fontFamily="@font/oxygen_bold" />
 
         <!-- Task Description -->
         <TextView
@@ -34,8 +33,7 @@
             android:text="@string/task_description_card"
             android:fontFamily="@font/oxygen"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/title_dark_cherry" />
+            android:layout_marginTop="4dp" />
 
         <TextView
             android:id="@+id/textViewDueDate"
