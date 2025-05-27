@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Skip thje sign in screen if user already signed in
-    /*@Override
+    @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -148,6 +148,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
-        }*/
-
+        }
+    }
 }

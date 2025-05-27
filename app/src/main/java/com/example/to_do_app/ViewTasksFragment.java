@@ -68,6 +68,7 @@ public class ViewTasksFragment extends Fragment {
             Toast.makeText(getActivity(), "User not authenticated", Toast.LENGTH_SHORT).show();
             return;
         }
+
         db.collection("users").document(user.getUid()).collection("tasks").orderBy("timestamp").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 linearLayoutTasks.removeAllViews();
@@ -75,17 +76,20 @@ public class ViewTasksFragment extends Fragment {
                     Task taskObj = document.toObject(Task.class);
 
                     View taskCardView = LayoutInflater.from(getActivity()).inflate(R.layout.item_task_card, linearLayoutTasks, false);
+
                     TextView taskTitleTextView = taskCardView.findViewById(R.id.textViewTitle);
                     TextView taskDescriptionTextView = taskCardView.findViewById(R.id.textViewDescription);
-                    TextView taskDueDateTextView = taskCardView.findViewById(R.id.textViewDueDate); // New TextView for due date
+                    TextView taskDueDateTextView = taskCardView.findViewById(R.id.textViewDueDate);
+                    TextView taskImportanceTextView = taskCardView.findViewById(R.id.textViewImportance);
 
                     ImageButton editButton = taskCardView.findViewById(R.id.buttonEditTask);
                     ImageButton deleteButton = taskCardView.findViewById(R.id.buttonDeleteTask);
 
+                    // Set task details
                     taskTitleTextView.setText(taskObj.getTitle());
                     taskDescriptionTextView.setText(taskObj.getDescription());
 
-                    // Format the due date to a readable format
+                    // Format the due date
                     SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
                     if (taskObj.getDueDate() != null) {
                         taskDueDateTextView.setText("Due: " + sdf.format(taskObj.getDueDate().toDate()));
@@ -93,6 +97,31 @@ public class ViewTasksFragment extends Fragment {
                         taskDueDateTextView.setText("Due: Not set");
                     }
 
+                    // Apply color-coded importance level
+                    if (taskObj.getImportance() != null) {
+                        switch (taskObj.getImportance()) {
+                            case 0: // Low importance
+                                taskImportanceTextView.setText("Importance: Low");
+                                taskImportanceTextView.setTextColor(getResources().getColor(R.color.importanceLow)); // Green
+                                break;
+                            case 1: // Medium importance
+                                taskImportanceTextView.setText("Importance: Medium");
+                                taskImportanceTextView.setTextColor(getResources().getColor(R.color.importanceMedium)); // Yellow
+                                break;
+                            case 2: // High importance
+                                taskImportanceTextView.setText("Importance: High");
+                                taskImportanceTextView.setTextColor(getResources().getColor(R.color.importanceHigh)); // Red
+                                break;
+                            default:
+                                taskImportanceTextView.setText("Importance: Not set");
+                                taskImportanceTextView.setTextColor(getResources().getColor(R.color.black)); // Default to black
+                        }
+                    } else {
+                        taskImportanceTextView.setText("Importance: Not set");
+                        taskImportanceTextView.setTextColor(getResources().getColor(R.color.black)); // Default to black
+                    }
+
+                    // Set edit and delete functionality
                     editButton.setOnClickListener(v -> {
                         Intent intent = new Intent(getActivity(), EditTaskActivity.class);
                         intent.putExtra("taskId", taskObj.getId());
@@ -102,9 +131,7 @@ public class ViewTasksFragment extends Fragment {
                         startActivity(intent);
                     });
 
-                    deleteButton.setOnClickListener(v -> {
-                        confirmDeleteTask(taskObj.getId());
-                    });
+                    deleteButton.setOnClickListener(v -> confirmDeleteTask(taskObj.getId()));
 
                     linearLayoutTasks.addView(taskCardView);
                 }

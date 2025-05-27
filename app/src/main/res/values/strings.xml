@@ -33,4 +33,15 @@
     <string name="confirm_password_registration">Confirm password</string>
     <string name="register_button_popup">Register</string>
     <string name="register_title">Create an account</string>
+
+    <string-array name="importance_levels">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="sorting_options">
+        <item>Sort by Due Date</item>
+        <item>Sort by Importance</item>
+    </string-array>
 </resources>
